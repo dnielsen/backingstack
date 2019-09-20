@@ -47,9 +47,13 @@ Frontend from Phase 3 with below backend options.
 ## Timeline
 
 [myechuri] 9/27/19 - Phase 1
+
 [myechuri] 10/4/19 - Phase 2
+
 [myechuri] 10/11/19 - Phase 3
+
 [myechuri] 10/18/19 - Phase 4
+
 [Lukas] ? - DevSpace add on
 
 ## Meetups / Workshops
