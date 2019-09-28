@@ -1,0 +1,37 @@
+version: v1beta3
+images:
+  guestbook-php:
+    image: ${DOCKER_USERNAME}/guestbookphp
+    dockerfile: ./src/Dockerfile
+    context: ./src/
+deployments:
+- name: guestbook-redis
+  helm:
+    chart:
+      name: stable/redis
+    values:
+      image:
+        tag: "5.0.5"
+      usePassword: false
+- name: guestbook-frontend
+  helm:
+    chart:
+      name: ./chart/
+    values:
+      image: ${DOCKER_USERNAME}/guestbookphp
+dev:
+  ports:
+  - imageName: guestbook-php
+    forward:
+    - port: 8080
+      remotePort: 80
+  open:
+  - url: http://localhost:8080
+  sync:
+  - imageName: guestbook-php
+    localSubPath: ./src/
+    containerPath: /var/www/html/
+vars:
+- name: DOCKER_USERNAME
+  question: What is your Docker Hub username? (e.g. john)
+  source: input

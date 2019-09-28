@@ -1,0 +1,27 @@
+version: v1beta3
+images:
+  guestbook-php:
+    image: your-docker-username/guestbookphp
+    dockerfile: ./src/Dockerfile
+    context: ./src/
+deployments:
+- name: guestbook-redis
+  kubectl:
+    manifests:
+    - manifests/redis-backend/*
+- name: guestbook-frontend
+  kubectl:
+    manifests:
+    - manifests/frontend/*
+dev:
+  ports:
+  - imageName: guestbook-php
+    forward:
+    - port: 8080
+      remotePort: 80
+  open:
+  - url: http://localhost:8080
+  sync:
+  - imageName: guestbook-php
+    localSubPath: ./src/
+    containerPath: /var/www/html/
