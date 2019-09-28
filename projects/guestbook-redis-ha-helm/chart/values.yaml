@@ -1,0 +1,4 @@
+image: gentele/guestbookphp
+redis:
+  master: guestbook-redis-master
+  slave: guestbook-redis-slave
