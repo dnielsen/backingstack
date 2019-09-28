@@ -1,5 +1,5 @@
-# PHP Guestbook with Redis HA Backend
-This is a simple PHP guestbook application with a redis backend. All parts of the application are deployed using Helm charts.
+# PHP Guestbook with Redis
+This is a simple PHP guestbook application with a redis backend. All parts of the application are deployed using Kubernetes manifests.
 
 <br>
 
